@@ -7,7 +7,7 @@ import datetime
 from datetime import date
 from datetime import time
 from datetime import datetime
-import asyncio
+import math
 
 
 bot = Bot(token=TOKEN,  parse_mode=types.ParseMode.MARKDOWN)
@@ -36,7 +36,9 @@ async def notes(message: types.Message):
     current_time = date_now_hours.strftime('%H:%M:%S')
 
     current_week = (date_now - semester_start).days
-    current_week_now = date(2021, 9, 20).isocalendar().week
+
+    current_week_now = str(math.floor(current_week / 7))
+    # current_week_now = date(2021, 9, 20).isocalendar().week
 
     await message.answer(
       f"Days from the date of study: `{current_week}`\n"
