@@ -1,4 +1,4 @@
-from tg_token import TOKEN
+import TOKEN
 from aiogram import Bot, Dispatcher, executor, types, executor
 from aiohttp.client import request
 import aiogram.utils.markdown as fmt
