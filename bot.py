@@ -1,4 +1,4 @@
-import TOKEN
+from tg_token import TOKEN
 from aiogram import Bot, Dispatcher, executor, types, executor
 from aiohttp.client import request
 import aiogram.utils.markdown as fmt
@@ -8,6 +8,7 @@ from datetime import date
 from datetime import time
 from datetime import datetime
 import math
+
 
 
 bot = Bot(token=TOKEN,  parse_mode=types.ParseMode.MARKDOWN)
@@ -28,7 +29,9 @@ async def cmd_start(message: types.Message):
 async def notes(message: types.Message):
     await bot.send_chat_action(message.chat.id, 'typing')
 
-    semester_start = date(2021, 9, 20)
+    # semester_start = date(2021, 9, 20)
+    semester_start = date(2022, 2, 14)
+
     semester_start_hours = time()
 
     date_now = date.today()
@@ -37,12 +40,13 @@ async def notes(message: types.Message):
 
     current_week = (date_now - semester_start).days
 
-    current_week_now = str(math.floor(current_week / 7))
+    current_week_now = str(math.floor(current_week / 6))
     # current_week_now = date(2021, 9, 20).isocalendar().week
 
     await message.answer(
       f"Days from the date of study: `{current_week}`\n"
-      f"Current week: `{current_week_now}`"
+      f"Current week: `{current_week_now}`\n"
+      f"Current date: `{date_now }`"
     )
 
 
@@ -50,4 +54,3 @@ async def notes(message: types.Message):
 if __name__ == '__main__':
     # asyncio.run(main())
     executor.start_polling(dp, skip_updates=True)
-    
