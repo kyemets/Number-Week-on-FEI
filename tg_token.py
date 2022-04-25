@@ -1,1 +1,1 @@
-TOKEN = '5140973788:AAE_68BzhHqffh8fazX3NstmYV3O0wt5YoM'
+TOKEN = 'telegram_bot_token'
